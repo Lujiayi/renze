@@ -7,181 +7,388 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
+            /* margin: 20px; */
         }
         .container {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            width: 1200px;
-            margin: 100px auto;
+            width: 1280px;
+            margin: 10px auto;
         }
         .card {
-            flex: 0 1 calc(18% - 33px);
+            flex: 0 1 calc(25% - 25px);
             box-sizing: border-box;
             padding: 15px;
+            border: 1px solid #ccc;
             border-radius: 2px;
             text-align: center;
             background-color: #fff;
             color: #444;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            font-size: 18px;
+            font-size: 16px;
             transition: all .3s;
         }
         .card:hover {
-            color: white;
-            background-color: #007BFF;
+            /* color: white;
+            background-color: #007BFF; */
             cursor: pointer;
             transform: scale(1.1);
+        }
+        .card_iframe{
+            width: 273px;
+            height: 153px;
+            overflow: hidden;
+        }
+        .card_iframe iframe{
+            width: 100vw;
+            height: 768px;
+            transform: scale(0.2);
+            transform-origin: 0px 0px;
+        }
+
+        .link_container{
+            text-align: center;
+        }
+        
+        .link_container a{
+            margin: 0px 24px;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
+    <div class="link_container">
+        <a target="_blank" href="https://note.youdao.com/s/7Pp6SH5R">网页制作与开发</a>
+        <a target="_blank" href="https://www.w3school.com.cn/tags/html_ref_byfunc.asp">HTML手册</a>
+        <a target="_blank" href="https://www.w3school.com.cn/cssref/index.asp">CSS手册</a>
+        <a target="_blank" href="https://www.w3school.com.cn/js/index.asp">JavaScript手册</a>
+        <a target="_blank" href="https://www.wenxiaobai.com/chat/200006">AI:问小白</a>
+    </div>
     <div class="container">
         
         <div class="card" onclick="gotoPage('luoshuqi/index.html')">
-            <span>罗淑琪</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>罗淑琪</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('yangxihan/index.html')">
-            <span>杨曦涵</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>杨曦涵</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('wuzhiwei/index.html')">
-            <span>吴治纬</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>吴治纬</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('lishijingyu/index.html')">
-            <span>李师静羽</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>李师静羽</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('hanyicheng/index.html')">
-            <span>韩宜橙</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>韩宜橙</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('chenhuiyi/index.html')">
-            <span>陈慧怡</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>陈慧怡</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('wangjunqiao/index.html')">
-            <span>王俊桥</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>王俊桥</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('hehaoyang/index.html')">
-            <span>何昊阳</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>何昊阳</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('aiyihang/index.html')">
-            <span>艾怡杭</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>艾怡杭</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('machuhan/index.html')">
-            <span>马楚涵</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>马楚涵</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('lixixuan/index.html')">
-            <span>李希璇</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>李希璇</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('zhuzihan/index.html')">
-            <span>朱子涵</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>朱子涵</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('duanxiaomiao/index.html')">
-            <span>段小淼</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>段小淼</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('lizixi/index.html')">
-            <span>李子曦</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>李子曦</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('zhangshaofan/index.html')">
-            <span>张少凡</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>张少凡</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('liyanting/index.html')">
-            <span>李彦霆</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>李彦霆</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('duanxuyang/index.html')">
-            <span>段旭阳</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>段旭阳</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('duzonghong/index.html')">
-            <span>杜宗鸿</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>杜宗鸿</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('yanhaorui/index.html')">
-            <span>严浩睿</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>严浩睿</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('daiweihao/index.html')">
-            <span>戴炜昊</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>戴炜昊</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('sunluyao/index.html')">
-            <span>孙璐瑶</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>孙璐瑶</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('fanhengyi/index.html')">
-            <span>范恒溢</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>范恒溢</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('wangjiaohao/index.html')">
-            <span>王姣皓</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>王姣皓</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('daiyihong/index.html')">
-            <span>戴益宏</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>戴益宏</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('jiamengxin/index.html')">
-            <span>贾梦欣</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>贾梦欣</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('heyuhan/index.html')">
-            <span>和钰涵</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>和钰涵</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('yinligui/index.html')">
-            <span>尹李桧</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>尹李桧</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('huyujia/index.html')">
-            <span>胡宇佳</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>胡宇佳</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('lufanxi/index.html')">
-            <span>卢梵希</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>卢梵希</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('yuanwenjunhui/index.html')">
-            <span>袁文俊辉</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>袁文俊辉</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('heqixun/index.html')">
-            <span>何其洵</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>何其洵</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('zuojiawei/index.html')">
-            <span>左家玮</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>左家玮</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('cengmingwei/index.html')">
-            <span>曾铭伟</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>曾铭伟</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('yangqingran/index.html')">
-            <span>杨清然</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>杨清然</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('xujinyu/index.html')">
-            <span>许瑾裕</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>许瑾裕</span>
+            </div>
         </div>
         
         <div class="card" onclick="gotoPage('lichen/index.html')">
-            <span>李晨</span>
+            <div class="card_iframe">
+                <iframe src="luoshuqi/index.html"></iframe>
+            </div>
+            <div>
+                <span>李晨</span>
+            </div>
         </div>
         
     </div>
