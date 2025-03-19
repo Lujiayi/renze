@@ -14,7 +14,7 @@
             flex-wrap: wrap;
             gap: 20px;
             width: 1280px;
-            margin: 60px auto;
+            margin: 10px auto;
         }
         .card {
             flex: 0 1 calc(25% - 25px);
@@ -46,14 +46,29 @@
             transform: scale(0.2);
             transform-origin: 0px 0px;
         }
+        .link_container{
+            text-align: center;
+        }
+        
+        .link_container a{
+            margin: 0px 24px;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
+    <div class="link_container">
+        <a target="_blank" href="https://note.youdao.com/s/7Pp6SH5R">网页制作与开发</a>
+        <a target="_blank" href="https://www.w3school.com.cn/tags/html_ref_byfunc.asp">HTML手册</a>
+        <a target="_blank" href="https://www.w3school.com.cn/cssref/index.asp">CSS手册</a>
+        <a target="_blank" href="https://www.w3school.com.cn/js/index.asp">JavaScript手册</a>
+        <a target="_blank" href="https://www.wenxiaobai.com/chat/200006">AI:问小白</a>
+    </div>
     <div class="container">
         {% for name in names %}
         <div class="card" onclick="gotoPage('{{ pinyin_dict[name] }}/index.html')">
             <div class="card_iframe">
-                <iframe src="luoshuqi/index.html"></iframe>
+                <iframe src="{{ pinyin_dict[name] }}/index.html"></iframe>
             </div>
             <div>
                 <span>{{ name }}</span>
