@@ -1,11 +1,59 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+<head>
     <meta charset="UTF-8">
-    <head>
-        <title>李子曦</title>
-    </head>
-    <body>
-        <h1>Hi~, My name is 李子曦, This is my first web page</h1>
-    </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>樱雨の次元 - 博客与游戏空间</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 樱花画布背景 -->
+    <canvas id="sakura"></canvas>
+    
+    <!-- 主内容容器 -->
+    <div class="container">
+        <!-- 头像区 -->
+        <header class="profile">
+            <img src="avatar.png" alt="美少女头像" class="avatar">
+            <h1>次元旅者·樱</h1>
+        </header>
+
+        <!-- 导航菜单 -->
+        <nav class="menu">
+            <a href="#blogs" class="active">游戏博客</a>
+            <a href="#videos">视频殿堂</a>
+            <a href="#about">关于次元</a>
+        </nav>
+
+        <!-- 博客发布区 -->
+        <section class="content-section" id="blogs">
+            <h2>最新战报</h2>
+            <form class="blog-form">
+                <input type="text" placeholder="标题..." required>
+                <textarea placeholder="记录你的游戏史诗..."></textarea>
+                <button type="submit">发布战记</button>
+            </form>
+            <div class="blog-list"><!-- 通过JS动态加载 --></div>
+        </section>
+
+        <!-- 视频展示区 -->
+        <section class="content-section" id="videos">
+            <h2>高光时刻</h2>
+            <div class="video-grid">
+                <!-- 示例视频卡片 -->
+                <div class="video-card">
+                    <video controls poster="thumbnail.jpg">
+                        <source src="demo.mp4" type="video/mp4">
+                    </video>
+                    <h3>五杀时刻！亚索疾风剑术</h3>
+                    <p>2025-03-18 12,345次播放</p>
+                </div>
+                <!-- 更多视频通过JS加载 -->
+            </div>
+        </section>
+    </div>
+
+    <script src="sakura.js"></script>
+    <script src="app.js"></script>
+</body>
 </html>
