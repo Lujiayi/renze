@@ -1,11 +1,41 @@
+<head>
+    <title>冷笑话搜索站</title>
+    <style>
+        .search-box { padding: 15px; background: #f0f8ff; }
+        .joke-list { margin: 20px; border: 1px solid #ddd; padding: 10px; }
+        .joke-item { margin: 10px 0; padding: 8px; background: #fff; }
+    </style>
+</head>
+<body>
+    <div class="search-box">
+        <input type="text" id="keyword" placeholder="输入关键词，如‘动物’">
+        <button onclick="searchJokes()">搜索</button>
+        <button onclick="randomJoke()">随机推荐</button>
+    </div>
+    <div class="joke-list" id="results"></div>
 
-<!DOCTYPE html>
-<html>
-    <meta charset="UTF-8">
-    <head>
-        <title>许瑾裕</title>
-    </head>
-    <body>
-        <h1>Hi~, My name is 许瑾裕, This is my first web page</h1>
-    </body>
-</html>
+    <script>
+        // 示例数据（可替换为API调用）
+        const jokes = [
+            { content: "金木水火土，谁的腿最长？火腿长（肠）", category: "谐音梗", likes: 152 },
+            { content: "吸血鬼不喜欢吃辣，因为它们喜欢blood（不辣）", category: "英语梗", likes: 89 }
+        ];
+
+        function searchJokes() {
+            const keyword = document.getElementById('keyword').value;
+            const filtered = jokes.filter(j => j.content.includes(keyword));
+            displayResults(filtered);
+        }
+
+        function displayResults(jokes) {
+            const html = jokes.map(j => `
+                <div class="joke-item">
+                    <p>${j.content}</p>
+                    <span>类别：${j.category} | 点赞：${j.likes}</span>
+                </div>
+            `).join('');
+            document.getElementById('results').innerHTML = html;
+        }
+    </script>
+</body>
+</html

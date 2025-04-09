@@ -1,11 +1,57 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+<head>
     <meta charset="UTF-8">
-    <head>
-        <title>贾梦欣</title>
-    </head>
-    <body>
-        <h1>Hi~, My name is 贾梦欣, This is my first web page</h1>
-    </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿百度搜索引擎</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 头部导航栏 -->
+    <header class="header">
+        <nav class="nav-left">
+            <ul>
+                <li><a href="#">新闻</a></li>
+                <li><a href="#">地图</a></li>
+                <li><a href="#">贴吧</a></li>
+                <li><a href="#">更多▼</a></li>
+            </ul>
+        </nav>
+        <div class="nav-right">
+            <a href="#">设置</a>
+            <a href="#" class="login-btn">登录</a>
+        </div>
+    </header>
+
+    <!-- 主体搜索区 -->
+    <main class="main-content">
+        <div class="logo">
+            <img src="https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3ebb4f3d3.png" alt="搜索引擎Logo">
+        </div>
+        
+        <!-- 搜索表单 -->
+        <form action="https://www.baidu.com/s" method="GET" class="search-form">
+            <div class="search-box">
+                <input type="text" name="wd" class="search-input" autocomplete="off">
+                <button type="submit" class="search-btn">搜索</button>
+            </div>
+        </form>
+
+        <!-- 快捷入口 -->
+        <div class="quick-links">
+            <a href="#">百度热榜</a>
+            <a href="#">疫情动态</a>
+            <a href="#">天气预报</a>
+        </div>
+    </main>
+
+    <!-- 页脚信息 -->
+    <footer class="footer">
+        <p>©2025 仿百度搜索 使用百度前必读 意见反馈</p>
+    </footer>
+
+    <!-- 可选的Google自定义搜索集成 -->
+    <script async src="https://cse.google.com/cse.js?cx=your-engine-id"></script>
+    <div class="gcse-search"></div>
+</body>
 </html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Startup - 开启未来</title>
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+
+        /* 首屏区域 */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            left: -50px;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            padding: 1.5rem 10%;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* 主要按钮样式 */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #f59e0b;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* 核心卖点区域 */
+        .features {
+            padding: 5rem 10%;
+            background: #f8fafc;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        /* 动画效果 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 10%;
+            max-width: 500px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero-image {
+                position: static;
+                max-width: 300px;
+                margin-top: 2rem;
+            }
+
+            .navbar {
+                padding: 1rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">StartUp</a>
+        <div class="nav-links">
+            <a href="#features" class="cta-button">立即体验</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem;">改变你的工作方式</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">智能协作平台，提升团队效率300%</p>
+            <a href="#signup" class="cta-button">免费试用 →</a>
+        </div>
+        <img src="https://cdn-icons-png.flaticon.com/512/1534/1534959.png" alt="产品演示" class="hero-image">
+    </section>
+
+    <section class="features" id="features">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">为什么选择我们</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>🚀 极速部署</h3>
+                <p>5分钟快速配置，立即开始使用</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔒 企业级安全</h3>
+                <p>银行级别数据加密，保障信息安全</p>
+            </div>
+            <div class="feature-card">
+                <h3>💡 智能AI助手</h3>
+                <p>集成GPT-4智能分析功能</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 滚动动画
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').style.background = 'rgba(255,255,255,0.9)';
+                document.querySelector('.logo').style.color = '#1e293b';
+            } else {
+                document.querySelector('.navbar').style.background = 'rgba(255,255,255,0.1)';
+                document.querySelector('.logo').style.color = 'white';
+            }
+</body>
+</html>

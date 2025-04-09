@@ -1,11 +1,32 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html>
     <head>
-        <title>段小淼</title>
+        <title>极简起始页</title>
+        <style>
+            body { background: url('动态壁纸链接') no-repeat center/cover; }
+            .container { max-width: 800px; margin: 200px auto; }
+            .search-box { padding: 15px; width: 100%; border-radius: 24px; }
+            .quick-links { display: grid; grid-template-columns: repeat(5,1fr); gap: 20px; }
+        </style>
     </head>
     <body>
-        <h1>Hi~, My name is 段小淼, This is my first web page</h1>
+        <div class="container">
+            <input type="text" class="search-box" placeholder="多引擎搜索...">
+            <div class="quick-links">
+                <a href="https://zhihu.com">知乎</a>
+                <a href="https://github.com">GitHub</a>
+                <!-- 添加更多快捷入口 -->
+            </div>
+        </div>
     </body>
+    </html>
+</body>
 </html>

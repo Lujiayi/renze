@@ -1,11 +1,40 @@
-
 <!DOCTYPE html>
-<html>
-    <meta charset="UTF-8">
-    <head>
-        <title>李晨</title>
-    </head>
-    <body>
-        <h1>Hi~, My name is 李晨, This is my first web page</h1>
-    </body>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>网页按钮示例</title>
+  <style>
+    /* 按钮的样式 */
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 按钮的 HTML 元素 -->
+  <button id="myButton">点击我</button>
+
+  <script>
+    // 获取按钮元素
+    const button = document.getElementById('myButton');
+    // 为按钮添加点击事件监听器
+    button.addEventListener('click', function () {
+      alert('你点击了按钮！');
+    });
+  </script>
+</body>
+
 </html>

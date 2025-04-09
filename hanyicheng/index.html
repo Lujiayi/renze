@@ -1,17 +1,159 @@
-<div style="width: 320px;border:1px solid #ddd;box-shadow: 0px 0px 10px #ddd;padding: 20px;margin: auto;">
-    <div style="display: flex;">
-        <div style="flex:0 0 100px"><img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/511/511.jpg"
-                style="width: 100%;height: 100%;"></div>
-        <div style="flex:1 0 auto;margin-left: 20px;">
-            <div style="font-weight: bold;font-size: 24px;">韩宜橙</div>
-            <div style="color: #999;margin-top: 12px;">高二(2)班</div>
-            <div style="color: #999;">
-                <span>爱好：</span>
-                <span>唱、跳、Rap、篮球</span>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>韩宜橙
+    </title>
+    <style>
+        /* 玻璃拟态效果 - 参考星际主题 */
+        body {
+            margin: 0;
+            background: url('https://example.com/space-bg.jpg') no-repeat center/cover;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
+            padding: 30px;
+            margin: 20px;
+        }
+
+        /* 动态导航栏 - 参考紫霞主题 */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 15px;
+            position: relative;
+            transition: all 0.3s;
+        }
+        .navbar a:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff00cc, #3333ff);
+            transition: all 0.3s;
+        }
+        .navbar a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* 3D卡片翻转 - 参考墨夜主题 */
+        .project-card {
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            margin: 20px;
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .project-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .card-front {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+        }
+        .card-back {
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- 粒子动画背景 - 参考Tomotoes模板 -->
+    <canvas id="particles-js"></canvas>
+
+    <div class="glass-panel" style="max-width: 1200px; margin: 50px auto;">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <a href="#home">首页</a>
+            <a href="#about">关于我</a>
+            <a href="#projects">作品集</a>
+            <a href="#contact">联系</a>
+        </nav>
+
+        <!-- 首页内容 -->
+        <section id="home" style="text-align: center; padding: 50px 0;">
+            <h1 style="font-size: 3em; margin-bottom: 20px;">你好，我是<span style="color: #ff00cc;">你的名字</span></h1>
+            <p style="font-size: 1.5em;">前端开发者 | 设计师 | 创意工作者</p>
+        </section>
+
+        <!-- 作品集展示 -->
+        <section id="projects" style="display: flex; flex-wrap: wrap; justify-content: center;">
+            <div class="project-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h3>项目1</h3>
+                        <p>点击查看详情</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>项目详情</h3>
+                        <p>这里描述你的项目...</p>
+                    </div>
+                </div>
             </div>
-            <div style="color: #aaa;font-size: 12px;">
-                <span>乐子</span>
-            </div>
-        </div>
+            <!-- 更多项目卡片... -->
+        </section>
     </div>
-</div>
+
+    <!-- 粒子动画脚本 - 参考Tomotoes模板 -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // 初始化粒子动画
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" }
+                }
+            }
+        });
+
+        // 滚动视差效果 - 参考星际主题
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const homeSection = document.getElementById('home');
+            homeSection.style.transform = `translateY(${

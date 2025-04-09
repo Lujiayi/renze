@@ -3,57 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>樱雨の次元 - 博客与游戏空间</title>
-    <link rel="stylesheet" href="style.css">
+    <title>简单搜索</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            padding-top: 15%;
+        }
+
+        .search-box {
+            width: 580px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #search-input {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            border: 1px solid #e4e4e4;
+            border-radius: 24px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        #search-input:hover,
+        #search-input:focus {
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+            border-color: rgba(223, 225, 229, 0);
+        }
+
+        .search-button {
+            background-color: #4e6ef2;
+            border: none;
+            padding: 12px 24px;
+            color: white;
+            margin-top: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .search-button:hover {
+            background-color: #4662d9;
+        }
+    </style>
 </head>
 <body>
-    <!-- 樱花画布背景 -->
-    <canvas id="sakura"></canvas>
-    
-    <!-- 主内容容器 -->
-    <div class="container">
-        <!-- 头像区 -->
-        <header class="profile">
-            <img src="avatar.png" alt="美少女头像" class="avatar">
-            <h1>次元旅者·樱</h1>
-        </header>
-
-        <!-- 导航菜单 -->
-        <nav class="menu">
-            <a href="#blogs" class="active">游戏博客</a>
-            <a href="#videos">视频殿堂</a>
-            <a href="#about">关于次元</a>
-        </nav>
-
-        <!-- 博客发布区 -->
-        <section class="content-section" id="blogs">
-            <h2>最新战报</h2>
-            <form class="blog-form">
-                <input type="text" placeholder="标题..." required>
-                <textarea placeholder="记录你的游戏史诗..."></textarea>
-                <button type="submit">发布战记</button>
+    <div class="search-container">
+        <div class="search-box">
+            <form action="https://www.baidu.com/s" method="GET" target="_blank">
+                <input type="text" id="search-input" name="wd" placeholder="请输入搜索关键词">
+                <br>
+                <button type="submit" class="search-button">百度一下</button>
             </form>
-            <div class="blog-list"><!-- 通过JS动态加载 --></div>
-        </section>
-
-        <!-- 视频展示区 -->
-        <section class="content-section" id="videos">
-            <h2>高光时刻</h2>
-            <div class="video-grid">
-                <!-- 示例视频卡片 -->
-                <div class="video-card">
-                    <video controls poster="thumbnail.jpg">
-                        <source src="demo.mp4" type="video/mp4">
-                    </video>
-                    <h3>五杀时刻！亚索疾风剑术</h3>
-                    <p>2025-03-18 12,345次播放</p>
-                </div>
-                <!-- 更多视频通过JS加载 -->
-            </div>
-        </section>
+        </div>
     </div>
-
-    <script src="sakura.js"></script>
-    <script src="app.js"></script>
 </body>
 </html>
