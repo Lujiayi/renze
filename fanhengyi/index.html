@@ -3,23 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My page</title>
+    <title>My Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://public.ysjf.com/product/preview/cT9mqPVWS6.jpg?x-oss-process=image/resize,w_500');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .profile-card {
+            width: 100%;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            overflow: hidden;
+        }
+        
+        .profile-header {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .avatar {
+            flex: 0 0 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-info {
+            flex: 1 0 auto;
+            margin-left: 25px;
+        }
+        
+        .name {
+            font-weight: bold;
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .class-info {
+            color: #666;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        
+        .hobbies {
+            color: #666;
+            margin-top: 8px;
+            font-size: 15px;
+        }
+        
+        .tagline {
+            color: #999;
+            font-size: 13px;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        
+        .video-container {
+            width: 100%;
+            margin-top: 25px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+        
+        .hobbies span:first-child {
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .hobbies span:last-child {
+            color: #4a6baf;
+        }
+        
+        /* 新增的偶像卡片样式 */
+        .idol-card {
+            width: 100%;
+            margin-top: 25px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .idol-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .idol-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #fff;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .idol-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .idol-info {
+            margin-left: 15px;
+            flex: 1;
+        }
+        
+        .idol-name {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .idol-link {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 5px 12px;
+            background-color: #4a6baf;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .idol-link:hover {
+            background-color: #3a5a9f;
+        }
+    </style>
 </head>
 <body>
-    <div style="width: 320px;border:1px solid #ddd;box-shadow: 0px 0px 10px #ddd;padding: 20px;margin: auto;">
-        <div style="display: flex;">
-            <div style="flex:0 0 100px"><img src="https://i1.hdslb.com/bfs/face/0d71fed316def4e4a711a7826db613d81a04d506.jpg@240w_240h_1c_1s_!web-avatar-search-user.webp"
-                    style="width: 100%;height: 100%;"></div>
-            <div style="flex:1 0 auto;margin-left: 20px;">
-                <div style="font-weight: bold;font-size: 24px;">范恒溢</div>
-                <div style="color: #999;margin-top: 12px;">高二(5)班</div>
-                <div style="color: #999;">
-                    <span>爱好：</span>
-                    <span>摄影，游戏，乒乓球</span>
+    <div class="container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="avatar">
+                    <img src="https://i1.hdslb.com/bfs/face/0d71fed316def4e4a711a7826db613d81a04d506.jpg@240w_240h_1c_1s_!web-avatar-search-user.webp">
                 </div>
-                <div style="color: #aaa;font-size: 12px;">
-                    <span>0 is start</span>
+                <div class="profile-info">
+                    <div class="name">范恒溢</div>
+                    <div class="class-info">高二(5)班</div>
+                    <div class="hobbies">
+                        <span>爱好：</span>
+                        <span>摄影，游戏，乒乓球</span>
+                    </div>
+                    <div class="tagline">
+                        <span>0 is start</span>
+                    </div>
                 </div>
+            </div>
+            
+            <!-- 新增的偶像卡片 -->
+            <div class="idol-card">
+                <div class="idol-image">
+                    <img src="https://img2.baidu.com/it/u=1814268193,1919866765&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="周杰伦">
+                </div>
+                <div class="idol-info">
+                    <div class="idol-name">周杰伦</div>
+                    <div style="color: #666; font-size: 14px;">歌手、音乐制作人、演员</div>
+                    <a href="https://www.jaychoustudio.com/" class="idol-link" target="_blank">访问官网</a>
+                </div>
+            </div>
+            
+            <div class="video-container">
+                <iframe src="https://upos-sz-mirrorcos.bilivideo.com/upgcxcode/99/88/196018899/196018899-1-208.mp4?e=ig8euxZM2rNcNbhHhWdVhwdlhze1hwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1747835651&gen=playurlv2&os=08cbv&oi=2015027109&trid=c6c2e55d88b847198da7c44aeaa90a12T&mid=3493287610551129&platform=html5&og=hw&upsig=f70ce6931755628cf6845af31926e9db&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform,og&bvc=vod&nettype=0&bw=391309&orderid=0,1&buvid=&build=0&mobi_app=&f=T_0_0&logo=80000000" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>

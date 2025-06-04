@@ -1,136 +1,336 @@
-From: <Saved by Blink>
-Snapshot-Content-Location: https://lujiayi.github.io/renze/zhangshaofan/index.html#
-Subject: =?utf-8?Q?=E5=BC=A0=E5=B0=91=E5=87=A1?=
-Date: Wed, 2 Apr 2025 09:58:00 -0000
-MIME-Version: 1.0
-Content-Type: multipart/related;
-	type="text/html";
-	boundary="----MultipartBoundary--BiuWRanX6YNzyPstqaTYtGOwStBRg8ccTMMhamITD7----"
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>高二三班张少凡</title>
+    <style>
+        body {
+            background: #f0f8ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
 
+        #game-container {
+            position: relative;
+            margin: 20px;
+        }
 
-------MultipartBoundary--BiuWRanX6YNzyPstqaTYtGOwStBRg8ccTMMhamITD7----
-Content-Type: text/html
-Content-ID: <frame-6ABC124A5028EDC66D0F9DC1EDAD3E89@mhtml.blink>
-Content-Transfer-Encoding: quoted-printable
-Content-Location: https://lujiayi.github.io/renze/zhangshaofan/index.html#
+        canvas {
+            border: 2px solid #87CEEB;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
 
-<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"tex=
-t/html; charset=3DUTF-8"><link rel=3D"stylesheet" type=3D"text/css" href=3D=
-"cid:css-cb3a7cdd-987c-497a-80ea-486373fba309@mhtml.blink" /><link rel=3D"s=
-tylesheet" type=3D"text/css" href=3D"cid:css-9d959ed3-eab3-40bc-b37e-51774e=
-463863@mhtml.blink" /></head>
-    <head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3DUTF-8"><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-1b910c=
-21-5416-4ee6-819d-d59aead73559@mhtml.blink" /><link rel=3D"stylesheet" type=
-=3D"text/css" href=3D"cid:css-2e1e6c10-cf6a-463a-824e-233c879e229d@mhtml.bl=
-ink" />
-   =20
-        <title>=E5=BC=A0=E5=B0=91=E5=87=A1</title>
-    </head><body>
-        <h1>
+        #score {
+            font-size: 24px;
+            color: #4682B4;
+            margin: 10px;
+        }
 
+        .modal {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255,255,255,0.95);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
 
-   =20
-    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
-=3D1.0">
-    <title>=E7=99=BE=E5=BA=A6</title>
-   =20
+        button {
+            background: #87CEEB;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
 
+        button:hover {
+            background: #4682B4;
+            color: white;
+        }
 
-   =20
-    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
-=3D1.0">
-    <title>=E7=99=BE=E5=BA=A6</title>
-   =20
+        #ad-text {
+            font-size: 32px;
+            color: #ff4444;
+            animation: blink 1s infinite;
+        }
 
-
-    <div class=3D"search-container">
-       =20
-        <div style=3D"margin: 20px;">
-            <input type=3D"text" id=3D"search-input" placeholder=3D"=E8=AF=
-=B7=E8=BE=93=E5=85=A5=E6=90=9C=E7=B4=A2=E5=85=B3=E9=94=AE=E8=AF=8D">
-            <button id=3D"search-button">=E6=90=9C=E7=B4=A2</button>
+        @keyframes blink {
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div id="score">得分：0</div>
+    <div id="game-container">
+        <canvas id="tetris" width="240" height="400"></canvas>
+        <div id="game-over" class="modal">
+            <h2>Game Over!</h2>
+            <button onclick="location.reload()">放弃</button>
+            <button onclick="showAd()">看广告</button>
+        </div>
+        <div id="ad-modal" class="modal">
+            <div id="ad-text">菜就多练</div>
+            <div id="countdown">10</div>
         </div>
     </div>
-    <div class=3D"search-footer">
-        <a href=3D"https://lujiayi.github.io/renze/zhangshaofan/index.html#=
-">=E5=B8=AE=E5=8A=A9</a> | <a href=3D"https://lujiayi.github.io/renze/zhang=
-shaofan/index.html#">=E5=8F=8D=E9=A6=88</a> | =C2=A92025 =E6=90=9C=E7=B4=A2=
-=E5=BC=95=E6=93=8E
-    </div>
 
-   =20
-   =20
+    <script>
+        const canvas = document.getElementById('tetris');
+        const ctx = canvas.getContext('2d');
+        const BLOCK_SIZE = 20;
+        let score = 0;
+        let adInterval;
+
+        // <script>
+    // 之前的常量声明和UI相关代码...
+    
+    // // 游戏常量
+const COLS = 12;
+const ROWS = 20;
+const BLOCK_SIZE = 20;
+
+// 方块形状配置
+const SHAPES = [
+    [[1,1,1,1]], // I
+    [[1,1,1],[0,1,0]], // T
+    [[1,1,1],[1,0,0]], // L
+    [[1,1,1],[0,0,1]], // J
+    [[1,1],[1,1]], // O
+    [[1,1,0],[0,1,1]], // S
+    [[0,1,1],[1,1,0]]  // Z
+];
+
+const COLORS = [
+    '#FF0000', '#00FF00', '#0000FF', 
+    '#FFFF00', '#FF00FF', '#00FFFF', '#FFA500'
+];
+
+// 游戏状态
+let board = Array(ROWS).fill().map(() => Array(COLS).fill(0));
+let currentPiece = null;
+let currentPos = {x: 0, y: 0};
+let score = 0;
+let gameLoop = null;
+let dropCounter = 0;
+let dropInterval = 1000;
+
+// 初始化游戏
+function init() {
+    // 创建新方块
+    createPiece();
+    // 设置游戏循环
+    gameLoop = setInterval(update, 100);
+    // 事件监听
+    document.addEventListener('keydown', handleInput);
+}
+
+// 生成新方块
+function createPiece() {
+    const type = Math.floor(Math.random() * SHAPES.length);
+    currentPiece = {
+        shape: SHAPES[type],
+        color: COLORS[type]
+    };
+    currentPos.x = Math.floor(COLS/2) - Math.floor(currentPiece.shape[0].length/2);
+    currentPos.y = 0;
+    
+    // 碰撞检测（游戏结束）
+    if (collision()) {
+        clearInterval(gameLoop);
+        gameOver();
+    }
+}
+
+// 碰撞检测
+function collision() {
+    return currentPiece.shape.some((row, dy) => {
+        return row.some((value, dx) => {
+            let newX = currentPos.x + dx;
+            let newY = currentPos.y + dy;
+            return (
+                value !== 0 &&
+                (newX < 0 || newX >= COLS || 
+                 newY >= ROWS ||
+                 (newY >= 0 && board[newY][newX]))
+            );
+        });
+    });
+}
+
+// 合并到棋盘
+function merge() {
+    currentPiece.shape.forEach((row, y) => {
+        row.forEach((value, x) => {
+            if (value) {
+                board[currentPos.y + y][currentPos.x + x] = currentPiece.color;
+            }
+        });
+    });
+}
+
+// 旋转方块
+function rotate() {
+    const rotated = currentPiece.shape[0].map((_, i) =>
+        currentPiece.shape.map(row => row[i]).reverse()
+    );
+    const previousShape = currentPiece.shape;
+    currentPiece.shape = rotated;
+    if (collision()) {
+        currentPiece.shape = previousShape;
+    }
+}
+
+// 消除满行
+function clearLines() {
+    let linesCleared = 0;
+    
+    for (let y = ROWS - 1; y >= 0; y--) {
+        if (board[y].every(cell => cell !== 0)) {
+            board.splice(y, 1);
+            board.unshift(Array(COLS).fill(0));
+            linesCleared++;
+            y++; // 重新检查当前行
+        }
+    }
+    
+    if (linesCleared > 0) {
+        updateScore(linesCleared);
+    }
+}
+
+// 游戏主循环
+function update() {
+    dropCounter += 100;
+    if (dropCounter > dropInterval) {
+        currentPos.y++;
+        if (collision()) {
+            currentPos.y--;
+            merge();
+            clearLines();
+            createPiece();
+        }
+        dropCounter = 0;
+    }
+    draw();
+}
+
+// 绘制游戏
+function draw() {
+    // 清空画布
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // 绘制棋盘
+    board.forEach((row, y) => {
+        row.forEach((value, x) => {
+            if (value) {
+                ctx.fillStyle = value;
+                ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, 
+                            BLOCK_SIZE - 1, BLOCK_SIZE - 1);
+            }
+        });
+    });
+    
+    // 绘制当前方块
+    ctx.fillStyle = currentPiece.color;
+    currentPiece.shape.forEach((row, y) => {
+        row.forEach((value, x) => {
+            if (value) {
+                ctx.fillRect(
+                    (currentPos.x + x) * BLOCK_SIZE,
+                    (currentPos.y + y) * BLOCK_SIZE,
+                    BLOCK_SIZE - 1,
+                    BLOCK_SIZE - 1
+                );
+            }
+        });
+    });
+}
+
+// 输入处理
+function handleInput(e) {
+    switch(e.keyCode) {
+        case 37: // 左
+            currentPos.x--;
+            if (collision()) currentPos.x++;
+            break;
+        case 39: // 右
+            currentPos.x++;
+            if (collision()) currentPos.x--;
+            break;
+        case 40: // 下
+            currentPos.y++;
+            if (collision()) {
+                currentPos.y--;
+                merge();
+                clearLines();
+                createPiece();
+            }
+            dropCounter = 0;
+            break;
+        case 38: // 上（旋转）
+            rotate();
+            break;
+        case 32: // 空格（硬降）
+            while(!collision()) {
+                currentPos.y++;
+            }
+            currentPos.y--;
+            merge();
+            clearLines();
+            createPiece();
+            break;
+    }
+    draw();
+}
+
+// 初始化游戏
+init();
+    
+    // 初始化游戏
+    init(); // 确保在DOM加载完成后调用
 
 
-   =20
+        function updateScore(lines) {
+            score += lines * 10;
+            document.getElementById('score').textContent = `得分：${score}`;
+        }
 
+        function gameOver() {
+            document.getElementById('game-over').style.display = 'block';
+        }
 
-   =20
+        function showAd() {
+            document.getElementById('game-over').style.display = 'none';
+            const adModal = document.getElementById('ad-modal');
+            adModal.style.display = 'block';
+            
+            let count = 10;
+            document.title = "高二三班张少凡";
+            
+            adInterval = setInterval(() => {
+                count--;
+                document.getElementById('countdown').textContent = count;
+                if(count <= 0) {
+                    clearInterval(adInterval);
+                    adModal.style.display = 'none';
+                    document.title = "俄罗斯方块";
+                    location.reload();
+                }
+            }, 1000);
+        }
 
-   =20
-
-
-    </h1>
-   =20
-
-</body></html>
-------MultipartBoundary--BiuWRanX6YNzyPstqaTYtGOwStBRg8ccTMMhamITD7----
-Content-Type: text/css
-Content-Transfer-Encoding: quoted-printable
-Content-Location: cid:css-cb3a7cdd-987c-497a-80ea-486373fba309@mhtml.blink
-
-@charset "utf-8";
-=0A
-------MultipartBoundary--BiuWRanX6YNzyPstqaTYtGOwStBRg8ccTMMhamITD7----
-Content-Type: text/css
-Content-Transfer-Encoding: quoted-printable
-Content-Location: cid:css-9d959ed3-eab3-40bc-b37e-51774e463863@mhtml.blink
-
-@charset "utf-8";
-
-body { font-family: "Microsoft YaHei", Arial, sans-serif; margin: 0px; padd=
-ing: 0px; }
-
-.search-container { text-align: center; margin-top: 100px; }
-
-#search-input { width: 500px; height: 40px; padding: 5px 15px; border: 1px =
-solid rgb(221, 221, 221); border-radius: 24px; font-size: 16px; box-shadow:=
- rgba(0, 0, 0, 0.1) 0px 2px 5px; }
-
-#search-button { height: 40px; padding: 0px 20px; background: rgb(66, 133, =
-244); color: white; border: none; border-radius: 4px; margin-left: 10px; cu=
-rsor: pointer; }
-
-.search-footer { position: fixed; bottom: 0px; width: 100%; text-align: cen=
-ter; padding: 10px; background: rgb(242, 242, 242); }
-------MultipartBoundary--BiuWRanX6YNzyPstqaTYtGOwStBRg8ccTMMhamITD7----
-Content-Type: text/css
-Content-Transfer-Encoding: quoted-printable
-Content-Location: cid:css-1b910c21-5416-4ee6-819d-d59aead73559@mhtml.blink
-
-@charset "utf-8";
-=0A
-------MultipartBoundary--BiuWRanX6YNzyPstqaTYtGOwStBRg8ccTMMhamITD7----
-Content-Type: text/css
-Content-Transfer-Encoding: quoted-printable
-Content-Location: cid:css-2e1e6c10-cf6a-463a-824e-233c879e229d@mhtml.blink
-
-@charset "utf-8";
-
-body { font-family: "Microsoft YaHei", Arial, sans-serif; margin: 0px; padd=
-ing: 0px; }
-
-.search-container { text-align: center; margin-top: 100px; }
-
-#search-input { width: 500px; height: 40px; padding: 5px 15px; border: 1px =
-solid rgb(221, 221, 221); border-radius: 24px; font-size: 16px; box-shadow:=
- rgba(0, 0, 0, 0.1) 0px 2px 5px; }
-
-#search-button { height: 40px; padding: 0px 20px; background: rgb(66, 133, =
-244); color: white; border: none; border-radius: 4px; margin-left: 10px; cu=
-rsor: pointer; }
-
-.search-footer { position: fixed; bottom: 0px; width: 100%; text-align: cen=
-ter; padding: 10px; background: rgb(242, 242, 242); }
-------MultipartBoundary--BiuWRanX6YNzyPstqaTYtGOwStBRg8ccTMMhamITD7------
+        // 初始化游戏
+        // 应包含游戏初始化逻辑、事件监听等
+    </script>
+</body>
+</html>

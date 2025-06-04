@@ -1,11 +1,115 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+<head>
     <meta charset="UTF-8">
-    <head>
-        <title>孙璐瑶</title>
-    </head>
-    <body>
-        <h1>Hi~, My name is 孙璐瑶, This is my first web page</h1>
-    </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孙璐瑶 - 高二五班</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(120deg, #e0f7fa, #c8e6c9);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #4CAF50;
+            box-shadow: 0 0 15px #4CAF50;
+            transition: transform 0.3s;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            color: #2e7d32;
+            font-size: 2.5em;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f1f8e9;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #4CAF50;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .highlight {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="images/avatar.jpg" alt="闪电头像" class="avatar">
+            <h1>孙璐瑶</h1>
+            <h3>高二五班</h3>
+        </div>
+
+        <div class="section">
+            <h2>个人简介</h2>
+            <p>我是<span class="highlight">闪电与青苹果</span>的化身，<br>
+            追求速度与活力的完美结合，<br>
+            在知识的海洋中追寻真理的光芒。</p>
+        </div>
+
+        <div class="section">
+            <h2>我的偶像</h2>
+            <p>从<span class="highlight">Holm</span>的身上，<br>
+            我学会了坚持与智慧的力量，<br>
+            他的精神如同北极星指引我的方向。</p>
+        </div>
+
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/yUhjZ5FT0rY" 
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+        </div>
+    </div>
+</body>
 </html>

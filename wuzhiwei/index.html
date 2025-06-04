@@ -1,275 +1,439 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>seach energe</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>优化版2D射击游戏</title>
     <style>
-        /* 基础样式重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
         body {
-            background: linear-gradient(200deg, #f9f5fa, #e4e8f0);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
+            margin: 0;
+            overflow: hidden;
+            background-color: #222;
         }
-        
-        /* 搜索容器样式 */
-        .search-container {
-            width: 90%;
-            max-width: 800px;
-            margin-bottom: 30px;
+        canvas {
+            display: block;
+            background-color: #333;
         }
-        
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 30px;
-            font-weight: 500;
-            text-align: center;
-        }
-        
-        /* 搜索框样式 */
-        .search-box {
-            position: relative;
-            display: flex;
-            align-items: center;
-            background: white;
-            border-radius: 50px;
-            padding: 10px 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-        }
-        
-        .search-box:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .search-icon {
-            color: #6b6b83;
-            font-size: 20px;
-            margin-right: 15px;
-        }
-        
-        .search-input {
-            flex: 1;
-            border: none;
-            outline: none;
-            padding: 10px 0;
-            font-size: 16px;
-            color: #333;
-            background: transparent;
-        }
-        
-        .search-input::placeholder {
-            color: #aaa;
-        }
-        
-        .search-btn {
-            background: linear-gradient(to right, #3498db, #2c3e50);
+        #gameInfo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
             color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            cursor: pointer;
+            font-family: Arial, sans-serif;
             font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
         }
-        
-        .search-btn:hover {
-            background: linear-gradient(to right, #2980b9, #1a252f);
-            transform: translateY(-2px);
+        #healthBar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 200px;
+            height: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            overflow: hidden;
         }
-        
-        /* 链接区域样式 */
-        .links-section {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-        }
-        
-        .links-section h2 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-weight: 500;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        
-        .links-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        
-        .link-card {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
-            transition: all 0.3s ease;
-            border-left: 4px solid #3498db;
-        }
-        
-        .link-card:hover {
-            background: #e9f5ff;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .link-card h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-        
-        .link-card p {
-            color: #7f8c8d;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        
-        .link-card a {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            display: inline-block;
-            transition: all 0.2s ease;
-        }
-        
-        .link-card a:hover {
-            color: #2980b9;
-            text-decoration: underline;
-        }
-        
-        /* 热门搜索区域 */
-        .popular-searches {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .popular-searches h2 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-weight: 500;
-            border-bottom: 2px solid #e74c3c;
-            padding-bottom: 10px;
-        }
-        
-        .tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .tag {
-            background: #f1f1f1;
-            color: #2c3e50;
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .tag:hover {
-            background: #e74c3c;
-            color: white;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .search-box {
-                flex-direction: column;
-                padding: 15px;
-                border-radius: 25px;
-            }
-            
-            .search-icon {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            
-            .search-input {
-                width: 100%;
-                margin-bottom: 15px;
-                text-align: center;
-            }
-            
-            .search-btn {
-                width: 100%;
-            }
-            
-            .links-container {
-                grid-template-columns: 1fr;
-            }
+        #healthFill {
+            height: 100%;
+            width: 100%;
+            background-color: #e74c3c;
+            transition: width 0.3s;
         }
     </style>
 </head>
 <body>
-    <div class="search-container">
-        <h1>搜索您需要的内容</h1>
-        <form class="search-box" action="https://www.baidu.com/s" method="get" target="_blank">
-            <i class="fas fa-search search-icon"></i>
-            <input class="search-input" type="text" name="wd" placeholder="输入关键词..." required>
-            <button class="search-btn" type="submit">搜索</button>
-        </form>
-        
-        <!-- 链接区域 -->
-        <div class="links-section">
-            <h2>相关资源链接</h2>
-            <div class="links-container">
-                <div class="link-card">
-                    <h3>SEO入门指南</h3>
-                    <p>了解搜索引擎优化的基础知识，提升网站排名</p>
-                    <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=zh-cn" target="_blank">查看指南 →</a>
-                </div>
-                <div class="link-card">
-                    <h3>百度排名优化</h3>
-                    <p>实用的SEO优化技巧，提高百度搜索排名</p>
-                    <a href="https://baijiahao.baidu.com/s?id=1821122502900613943" target="_blank">阅读技巧 →</a>
-                </div>
-                <div class="link-card">
-                    <h3>网站设计规范</h3>
-                    <p>网页宽度、搜索框设计等基础规范</p>
-                    <a href="https://m.renrendoc.com/paper/211278238.html" target="_blank">查看规范 →</a>
-                </div>
-                <div class="link-card">
-                    <h3>Google SEO教程</h3>
-                    <p>初学者SEO教程：分步指南</p>
-                    <a href="https://www.guru99.com/zh-CN/seo-tutorial.html" target="_blank">学习教程 →</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 热门搜索区域 -->
-        <div class="popular-searches">
-            <h2>热门搜索关键词</h2>
-            <div class="tags-container">
-                <div class="tag">HTML教程</div>
-                <div class="tag">CSS布局</div>
-                <div class="tag">JavaScript基础</div>
-                <div class="tag">响应式设计</div>
-                <div class="tag">前端框架</div>
-                <div class="tag">SEO优化</div>
-                <div class="tag">网站性能</div>
-                <div class="tag">用户体验</div>
-            </div>
-        </div>
+    <canvas id="gameCanvas"></canvas>
+    <div id="gameInfo">
+        分数: <span id="score">0</span> | 
+        敌人: <span id="enemyCount">0</span> | 
+        时间: <span id="time">0</span>s
     </div>
+    <div id="healthBar">
+        <div id="healthFill"></div>
+    </div>
+
+    <script>
+        // 游戏初始化
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // 游戏状态
+        let score = 0;
+        let gameTime = 0;
+        let enemies = [];
+        let bullets = [];
+        let obstacles = [];
+        let keys = {};
+        let lastEnemySpawnTime = 0;
+        let enemySpawnInterval = 2000; // 2秒生成一个敌人
+        let mouseX = canvas.width / 2;
+        let mouseY = canvas.height / 2;
+
+        // 玩家设置 (增大尺寸)
+        const player = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            width: 60,  // 增大尺寸
+            height: 60, // 增大尺寸
+            speed: 5,
+            color: '#3498db',
+            health: 100,
+            lastShot: 0,
+            shootDelay: 300,
+            isStuck: false,
+            stuckTimer: 0
+        };
+
+        // 加载图片资源
+        const playerImg = new Image();
+        playerImg.src = 'https://img2.baidu.com/it/u=229566477,3875187204&fm=253&fmt=auto&app=138&f=JPEG?w=383&h=487';
+
+        const enemyImg = new Image();
+        enemyImg.src = 'https://img0.baidu.com/it/u=951413495,249909482&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=706';
+
+        const obstacleImg = new Image();
+        obstacleImg.src = 'https://img1.baidu.com/it/u=2307527140,817972761&fm=253&fmt=auto&app=138&f=JPEG?w=339&h=500';
+
+        // 生成随机障碍物 (缩小尺寸)
+        function generateObstacles() {
+            obstacles = [];
+            const obstacleCount = 8 + Math.floor(Math.random() * 10); // 8-18个障碍物
+            
+            for (let i = 0; i < obstacleCount; i++) {
+                const size = 30 + Math.random() * 40; // 30-70大小 (比之前小)
+                obstacles.push({
+                    x: Math.random() * (canvas.width - size),
+                    y: Math.random() * (canvas.height - size),
+                    width: size,
+                    height: size,
+                    color: '#8bb58b'
+                });
+            }
+        }
+
+        // 键盘控制
+        window.addEventListener('keydown', (e) => {
+            keys[e.key.toLowerCase()] = true;
+        });
+
+        window.addEventListener('keyup', (e) => {
+            keys[e.key.toLowerCase()] = false;
+        });
+
+        // 鼠标位置追踪
+        canvas.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // 鼠标控制射击
+        canvas.addEventListener('mousedown', (e) => {
+            shoot(e.clientX, e.clientY);
+        });
+
+        // 窗口大小调整
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            player.x = Math.min(player.x, canvas.width - player.width/2);
+            player.y = Math.min(player.y, canvas.height - player.height/2);
+        });
+
+        // 射击函数
+        function shoot(targetX, targetY) {
+            const now = Date.now();
+            if (now - player.lastShot < player.shootDelay) return;
+            
+            player.lastShot = now;
+            
+            const angle = Math.atan2(targetY - player.y, targetX - player.x);
+            
+            bullets.push({
+                x: player.x,
+                y: player.y,
+                speed: 10,
+                dx: Math.cos(angle),
+                dy: Math.sin(angle),
+                size: 8,  // 增大子弹尺寸
+                color: '#f1c40f'
+            });
+        }
+
+        // 生成敌人
+        function spawnEnemy() {
+            let x, y;
+            if (Math.random() < 0.5) {
+                x = Math.random() < 0.5 ? -40 : canvas.width + 40;
+                y = Math.random() * canvas.height;
+            } else {
+                x = Math.random() * canvas.width;
+                y = Math.random() < 0.5 ? -40 : canvas.height + 40;
+            }
+            
+            const size = 40 + Math.random() * 30; // 40-70大小
+            const speed = 1.5 + Math.random() * 2; // 1.5-3.5速度
+            
+            enemies.push({
+                x: x,
+                y: y,
+                width: size,
+                height: size,
+                speed: speed,
+                health: 50,
+                color: '#e74c3c',
+                stuckTimer: 0,
+                lastDirectionChange: 0,
+                direction: Math.random() * Math.PI * 2 // 随机初始方向
+            });
+        }
+
+        // 碰撞检测 (改进版)
+        function checkCollision(obj1, obj2) {
+            return obj1.x < obj2.x + obj2.width &&
+                   obj1.x + obj1.width > obj2.x &&
+                   obj1.y < obj2.y + obj2.height &&
+                   obj1.y + obj1.height > obj2.y;
+        }
+
+        // 改进的玩家移动处理 (防止穿过障碍物)
+        function movePlayer() {
+            const prevX = player.x;
+            const prevY = player.y;
+            
+            if (keys['w'] && player.y > player.height/2) player.y -= player.speed;
+            if (keys['s'] && player.y < canvas.height - player.height/2) player.y += player.speed;
+            if (keys['a'] && player.x > player.width/2) player.x -= player.speed;
+            if (keys['d'] && player.x < canvas.width - player.width/2) player.x += player.speed;
+            
+            // 边缘限制
+            player.x = Math.max(player.width/2, Math.min(player.x, canvas.width - player.width/2));
+            player.y = Math.max(player.height/2, Math.min(player.y, canvas.height - player.height/2));
+            
+            // 检查与障碍物碰撞
+            for (let i = 0; i < obstacles.length; i++) {
+                if (checkCollision({
+                    x: player.x - player.width/2,
+                    y: player.y - player.height/2,
+                    width: player.width,
+                    height: player.height
+                }, obstacles[i])) {
+                    // 尝试不同方向的移动
+                    if (keys['w'] || keys['s']) {
+                        player.y = prevY;
+                        if (keys['a'] || keys['d']) {
+                            player.x = prevX;
+                        }
+                    } else if (keys['a'] || keys['d']) {
+                        player.x = prevX;
+                    }
+                    
+                    player.isStuck = true;
+                    player.stuckTimer = Date.now();
+                    break;
+                }
+            }
+            
+            // 如果卡住超过500ms，自动后退
+            if (player.isStuck && Date.now() - player.stuckTimer > 500) {
+                const angle = Math.atan2(player.y - mouseY, player.x - mouseX);
+                player.x += Math.cos(angle) * player.speed * 2;
+                player.y += Math.sin(angle) * player.speed * 2;
+                
+                // 检查是否解除卡住状态
+                let stillStuck = false;
+                for (let i = 0; i < obstacles.length; i++) {
+                    if (checkCollision({
+                        x: player.x - player.width/2,
+                        y: player.y - player.height/2,
+                        width: player.width,
+                        height: player.height
+                    }, obstacles[i])) {
+                        stillStuck = true;
+                        break;
+                    }
+                }
+                
+                if (!stillStuck) {
+                    player.isStuck = false;
+                }
+            }
+        }
+
+        // 改进的敌人AI (避免卡在障碍物中)
+        function updateEnemyAI(enemy, timestamp) {
+            const angleToPlayer = Math.atan2(player.y - enemy.y, player.x - enemy.x);
+            
+            // 每0.5-1秒随机改变一次方向，避免卡住
+            if (timestamp - enemy.lastDirectionChange > 500 + Math.random() * 500) {
+                enemy.direction = angleToPlayer + (Math.random() - 0.5) * Math.PI/2;
+                enemy.lastDirectionChange = timestamp;
+            }
+            
+            // 检查当前路径是否有障碍物
+            const nextX = enemy.x + Math.cos(enemy.direction) * enemy.speed;
+            const nextY = enemy.y + Math.sin(enemy.direction) * enemy.speed;
+            
+            let pathBlocked = false;
+            for (let i = 0; i < obstacles.length; i++) {
+                if (checkCollision({
+                    x: nextX - enemy.width/2,
+                    y: nextY - enemy.height/2,
+                    width: enemy.width,
+                    height: enemy.height
+                }, obstacles[i])) {
+                    pathBlocked = true;
+                    break;
+                }
+            }
+            
+            if (pathBlocked) {
+                // 路径被阻挡，随机改变方向
+                enemy.direction = angleToPlayer + (Math.random() - 0.5) * Math.PI;
+                enemy.lastDirectionChange = timestamp;
+            }
+            
+            // 应用移动
+            enemy.x += Math.cos(enemy.direction) * enemy.speed;
+            enemy.y += Math.sin(enemy.direction) * enemy.speed;
+            
+            // 确保敌人不会卡在边缘
+            enemy.x = Math.max(enemy.width/2, Math.min(enemy.x, canvas.width - enemy.width/2));
+            enemy.y = Math.max(enemy.height/2, Math.min(enemy.y, canvas.height - enemy.height/2));
+        }
+
+        // 游戏主循环
+        function gameLoop(timestamp) {
+            // 清除画布
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // 更新游戏时间
+            if (!lastEnemySpawnTime) lastEnemySpawnTime = timestamp;
+            gameTime = Math.floor((timestamp - lastEnemySpawnTime) / 1000);
+            
+            // 更新UI
+            document.getElementById('score').textContent = score;
+            document.getElementById('enemyCount').textContent = enemies.length;
+            document.getElementById('time').textContent = gameTime;
+            document.getElementById('healthFill').style.width = `${player.health}%`;
+            
+            // 生成敌人
+            if (timestamp - lastEnemySpawnTime > enemySpawnInterval) {
+                spawnEnemy();
+                lastEnemySpawnTime = timestamp;
+                // 随时间增加，敌人生成速度加快
+                enemySpawnInterval = Math.max(500, 2000 - gameTime * 100);
+            }
+            
+            // 玩家移动 (改进版)
+            movePlayer();
+            
+            // 绘制障碍物
+            obstacles.forEach(obstacle => {
+                ctx.drawImage(obstacleImg, obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+            });
+            
+            // 绘制玩家 (朝向鼠标)
+            ctx.save();
+            const angle = Math.atan2(mouseY - player.y, mouseX - player.x);
+            ctx.translate(player.x, player.y);
+            ctx.rotate(angle);
+            ctx.drawImage(playerImg, -player.width/2, -player.height/2, player.width, player.height);
+            ctx.restore();
+            
+            // 更新和绘制子弹
+            bullets.forEach((bullet, bulletIndex) => {
+                bullet.x += bullet.dx * bullet.speed;
+                bullet.y += bullet.dy * bullet.speed;
+                
+                // 检查子弹是否超出屏幕
+                if (bullet.x < 0 || bullet.x > canvas.width || 
+                    bullet.y < 0 || bullet.y > canvas.height) {
+                    bullets.splice(bulletIndex, 1);
+                    return;
+                }
+                
+                // 检查子弹与障碍物碰撞
+                for (let i = 0; i < obstacles.length; i++) {
+                    if (checkCollision({
+                        x: bullet.x - bullet.size/2,
+                        y: bullet.y - bullet.size/2,
+                        width: bullet.size,
+                        height: bullet.size
+                    }, obstacles[i])) {
+                        bullets.splice(bulletIndex, 1);
+                        return;
+                    }
+                }
+                
+                // 检查子弹与敌人碰撞
+                enemies.forEach((enemy, enemyIndex) => {
+                    if (checkCollision({
+                        x: bullet.x - bullet.size/2,
+                        y: bullet.y - bullet.size/2,
+                        width: bullet.size,
+                        height: bullet.size
+                    }, enemy)) {
+                        enemy.health -= 25;
+                        if (enemy.health <= 0) {
+                            enemies.splice(enemyIndex, 1);
+                            score += 10;
+                        }
+                        bullets.splice(bulletIndex, 1);
+                    }
+                });
+                
+                // 绘制子弹
+                ctx.fillStyle = bullet.color;
+                ctx.beginPath();
+                ctx.arc(bullet.x, bullet.y, bullet.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            
+            // 更新和绘制敌人 (改进AI)
+            enemies.forEach((enemy, index) => {
+                updateEnemyAI(enemy, timestamp);
+                
+                // 绘制敌人
+                ctx.drawImage(enemyImg, enemy.x - enemy.width/2, enemy.y - enemy.height/2, enemy.width, enemy.height);
+                
+                // 检查敌人与玩家碰撞
+                if (checkCollision({
+                    x: player.x - player.width/2,
+                    y: player.y - player.height/2,
+                    width: player.width,
+                    height: player.height
+                }, enemy)) {
+                    player.health -= 0.5;
+                    if (player.health <= 0) {
+                        alert(`游戏结束! 得分: ${score}`);
+                        resetGame();
+                    }
+                }
+            });
+            
+            requestAnimationFrame(gameLoop);
+        }
+
+        // 重置游戏
+        function resetGame() {
+            score = 0;
+            gameTime = 0;
+            enemies = [];
+            bullets = [];
+            player.x = canvas.width / 2;
+            player.y = canvas.height / 2;
+            player.health = 100;
+            generateObstacles();
+            lastEnemySpawnTime = 0;
+        }
+
+        // 开始游戏
+        generateObstacles();
+        requestAnimationFrame(gameLoop);
+    </script>
 </body>
 </html>

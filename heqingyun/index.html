@@ -1,0 +1,167 @@
+<template>
+    <div class="h-screen bg-cyber-space relative overflow-hidden">
+      <!-- 流体背景动画 -->
+      <fluid-background class="absolute inset-0" />
+      
+      <!-- 全息导航环 -->
+      <div class="holo-ring" :style="ringStyle"></div>
+  
+      <!-- 主内容区 -->
+      <div class="relative z-10 container mx-auto px-4 pt-20">
+        <!-- 动态标题 -->
+        <h1 
+          class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-pink mb-12 text-center glitch"
+          data-text="VORTEX SEARCH"
+        >VORTEX SEARCH</h1>
+  
+        <!-- 量子搜索框 -->
+        <div 
+          class="quantum-search-container bg-space-black rounded-2xl p-1 shadow-holographic"
+          @mousemove="handleHover"
+        >
+          <div class="flex items-center px-6 py-4 space-x-4 bg-radial-gradient">
+            <div class="neon-scanline"></div>
+            <svg class="w-10 h-10 text-neon-purple animate-pulse" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
+            </svg>
+            <input
+              type="text"
+              class="flex-1 bg-transparent text-neon-cyan placeholder-neon-pink-300 text-2xl font-digital focus:outline-none"
+              placeholder="ENTER QUERY DIMENSION..."
+              @focus="activateParticles"
+              @blur="deactivateParticles"
+            />
+            <button 
+              class="quantum-button bg-neon-pink text-space-black px-6 py-3 rounded-xl hover:bg-neon-purple transition-all duration-300"
+              @click="search"
+            >
+              INITIATE
+            </button>
+          </div>
+        </div>
+  
+        <!-- 维度导航 -->
+        <div class="grid grid-cols-3 gap-6 mt-16">
+          <div 
+            v-for="(dimension, index) in dimensions"
+            :key="index"
+            class="dimension-card p-6 bg-space-black/80 backdrop-blur-lg rounded-xl border border-neon-cyan/20 hover:border-neon-pink transition-all cursor-pointer"
+            @mouseenter="hoverCard(index)"
+            @mouseleave="leaveCard"
+          >
+            <div class="text-neon-cyan text-2xl mb-2">{{ dimension.title }}</div>
+            <div class="text-neon-purple/80 font-digital">{{ dimension.desc }}</div>
+            <div class="hologram-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  <script setup>
+  import { ref, onMounted } from 'vue'
+  import { gsap } from 'gsap'
+  
+  // 流体背景组件
+  const FluidBackground = {
+    template: `<canvas class="fluid-canvas"></canvas>`,
+    mounted() {
+      // Canvas实现流体动画...
+    }
+  }
+  
+  const dimensions = ref([
+    { title: 'CYBER WAVE', desc: '// 赛博声波档案库' },
+    { title: 'GLITCH ART', desc: '// 数字故障艺术集' },
+    { title: 'NEON NOIR', desc: '// 霓虹黑色电影' },
+  ])
+  
+  const ringStyle = ref({
+    transform: 'rotate(0deg)'
+  })
+  
+  const handleHover = (e) => {
+    const x = e.clientX / window.innerWidth - 0.5
+    const y = e.clientY / window.innerHeight - 0.5
+    gsap.to('.holo-ring', {
+      x: x * 40,
+      y: y * 40,
+      rotation: x * 20,
+      duration: 2
+    })
+  }
+  
+  const hoverCard = (index) => {
+    gsap.to(`.dimension-card:nth-child(${index+1}) .hologram-overlay`, {
+      opacity: 0.3,
+      duration: 0.3
+    })
+  }
+  
+  const leaveCard = () => {
+    gsap.to('.hologram-overlay', {
+      opacity: 0,
+      duration: 0.3
+    })
+  }
+  </script>
+  
+  <style>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  
+  .bg-cyber-space {
+    background: #0a0a1a;
+  }
+  
+  .text-neon-cyan {
+    color: #0ff;
+  }
+  
+  .text-neon-pink {
+    color: #f0f;
+  }
+  
+  .shadow-holographic {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2),
+                0 0 50px rgba(255, 0, 255, 0.1);
+  }
+  
+  .holo-ring {
+    @apply absolute w-96 h-96 rounded-full border-4 border-neon-cyan/30;
+    filter: blur(30px);
+    animation: holo-pulse 8s infinite;
+  }
+  
+  .glitch {
+    position: relative;
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      left: -2px;
+      text-shadow: 2px 0 #0ff;
+      clip: rect(0, 900px, 0, 0);
+      animation: glitch-1 2s infinite linear alternate-reverse;
+    }
+  }
+  
+  @keyframes holo-pulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.2); }
+  }
+  
+  .quantum-button {
+    position: relative;
+    overflow: hidden;
+    &::after {
+      content: '';
+      @apply absolute inset-0 bg-white/10;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+  </style>

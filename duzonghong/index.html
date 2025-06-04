@@ -1,26 +1,121 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的网页</title>
+    <title>明星宣传页 - 任嘉伦</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .creator-info {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .star-name {
+            text-align: center;
+            color: #333;
+            font-size: 36px;
+            margin: 20px 0;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .photo-section {
+            flex: 1;
+        }
+
+        .star-photo {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .star-photo:hover {
+            transform: scale(1.03);
+        }
+
+        .video-section {
+            flex: 1;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bio-section {
+            margin-top: 30px;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+        }
+    </style>
 </head>
 <body>
-    <style>
-    container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      } 
-      </style>
-      <style>
-        .banner {
-            background: url("https://ts3.tc.mm.bing.net/th/id/OIP-C.Md86Wi2EYiKHNPldRZiD4gHaEo?w=316&h=197&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2.jpg") no-repeat center / cover;
-            width: 100%;
-            min-height: 400px;
-          }
-        </style>
-        <div id="hero">欢迎页</div>
-        <div class="banner"></div>
+    <div class="container">
+        <div class="creator-info">
+            <h3>制作人：杜宗鸿</h3>
+            <p>班级：高二4班</p>
+        </div>
+
+        <h1 class="star-name">任嘉伦</h1>
+
+        <div class="main-content">
+            <div class="photo-section1">
+                <img src="https://mmbiz.qpic.cn/sz_mmbiz_png/qrWStV9tpzJzm6GpB0hU80m1nHPE6qq0Xhh8H7iaEjUs7ibFIscGGQWhE67LDvVIXDqaVyo4hJYibIjck7OqD2ibAg/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="任嘉伦照片" class="star-photo">
+            </div>
+            <div class="main-content2">
+                <div class="photo-section">
+                    <img src="https://mmbiz.qpic.cn/sz_mmbiz_png/qrWStV9tpzJzm6GpB0hU80m1nHPE6qq0c9IVFY9vorcwGpdz9a0MbU3ONFW0DtBLDicicSjNrb9uoKCnnOmdqmicw/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="任嘉伦照片" class="star-photo">
+                </div>
+            <div class="video-section">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/exampleMV" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="bio-section">
+            <h2>个人简介</h2>
+            <p>任嘉伦（Allen），原名任国超，1989年4月11日出生于山东省青岛市，中国内地男演员、歌手</p>
+            <p> 2009年，参加雪碧名师高徒获得山东赛区3强。2010年，参加《先声夺金，唱响亚运》歌手挑战赛全国总决赛，获得“优秀亚运歌手”称号。2011年，加入中韩组合并担任队长、领舞和Rapper。2014年，从韩国学习回来后被选为古装断案剧《通天狄仁杰》的男主角。2016年，出演仙侠玄幻剧《青云志》；同年因出演古代传奇剧《大唐荣耀》中李俶一角获得关注，并凭借此角色获得第4届“文荣奖”最佳男主角奖。2017年，签约欢瑞世纪。2019年，主演电视剧《锦衣之下》获得好评。2020年12月，获2021爱奇艺尖叫之夜年度魅力演员奖并发行单曲《see ya》。2022年1月31日，参加中央广播电视总台《2022年春节联欢晚会》，合唱歌曲《真爱起舞》。2023年11月25日，获得2023爱奇艺尖叫之夜海外单元亚太年度优秀演员。2024年6月23日，宣布与欢瑞世纪合约到期不续约。11月5日，获微博视界大会年度优秀演员。2025年1月11日，获2024微博之夜年度优秀演员。1月22日，参加《中央广播电视总台2025网络春晚》，在晚会中表演《光合生长》节目。
+                 2025年4月12日，主演的电视剧《无忧渡》在爱奇艺播出，在剧中饰演久宣夜</p>
+        </div>
+    </div>
 </body>
 </html>

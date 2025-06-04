@@ -1,31 +1,97 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>网页按钮示例</title>
-  <style>
-    /* 按钮的基本样式 */
-    button {
-      padding: 10px 20px;
-      background-color: #e7618e;
-      color: rgb(252, 212, 212);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    <style>
+        body {
+            font-family: '微软雅黑', Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
 
-    /* 鼠标悬停时的样式 */
-    button:hover {
-      background-color: #eb81c2;
-    }
-  </style>
+        .profile-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 3px solid #7a496c;
+        }
+
+        h1 {
+            color: #462558;
+            margin-bottom: 15px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .info-list li {
+            padding: 12px;
+            margin: 8px 0;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-list i {
+            margin-right: 10px;
+            color: #851e62;
+        }
+
+        .note {
+            color: #a56fa2;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
-  <button>来打我呀</button>
-</body>
+    <div class="profile-card">
+        <img src="https://img.taotu.cn/ssd/ssd3/1/2023-07-26/1_882b8a3fec4b34366d72d348102adf1d.jpg" alt="头像" class="avatar">
+        <h1>尹李桧</h1>
+        
+        <ul class="info-list">
+            <li>
+                <i class="fas fa-user"></i>
+                <span>姓名：尹李桧</span>
+            </li>
+            <li>
+                <i class="fas fa-birthday-cake"></i>
+                <span>年龄：16岁</span>
+            </li>
+            <li>
+                <i class="fas fa-school"></i>
+                <span>班级：高二（6）班</span>
+            </li>
+            <li>
+                <i class="fas fa-id-card"></i>
+                <span>学号：555666</span>
+            </li>
+            
+        </ul>
 
+        <p class="note">以上信息更新于：某一天</p>
+    </div>
+</body>
 </html>

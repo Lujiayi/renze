@@ -1,11 +1,241 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+<head>
     <meta charset="UTF-8">
-    <head>
-        <title>和钰涵</title>
-    </head>
-    <body>
-        <h1>Hi~, My name is 和钰涵, This is my first web page</h1>
-    </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星海搜索 - 创意百度门户</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --neon-effect: #00fffb;
+            --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', '微软雅黑', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg-gradient);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 动态波纹背景 */
+        .ripple-background {
+            position: absolute;
+            width: 200vw;
+            height: 200vh;
+            background: 
+                radial-gradient(circle at 50% 50%, 
+                    rgba(66, 133, 244, 0.1) 0%, 
+                    transparent 70%);
+            animation: ripple 8s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            from { transform: scale(0.8); }
+            50% { transform: scale(1.2); }
+            to { transform: scale(0.8); }
+        }
+
+        /* 搜索容器 */
+        .search-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            z-index: 2;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* 动态logo */
+        .logo {
+            width: 300px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 15px var(--primary-color));
+            transition: transform 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        /* 搜索输入框 */
+        .search-box {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            box-shadow: 0 0 25px rgba(66, 133, 244, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            box-shadow: 0 0 35px var(--primary-color);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* 搜索按钮 */
+        .search-button {
+            margin-top: 2rem;
+            padding: 1rem 3rem;
+            background: var(--primary-color);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .search-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(66, 133, 244, 0.5);
+        }
+
+        .search-button:hover::before {
+            left: 100%;
+        }
+
+        /* 动态占位符 */
+        @keyframes placeholder-pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            animation: placeholder-pulse 2s infinite;
+        }
+
+        /* 悬浮特效 */
+        .hover-effects {
+            position: fixed;
+            pointer-events: none;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .logo {
+                width: 200px;
+            }
+            
+            .search-box {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ripple-background"></div>
+    <div class="hover-effects"></div>
+
+    <div class="search-container">
+        <img src="https://www.baidu.com/img/PCpad_012830ebaa7e4379b9a543963eba68ae.png" 
+             alt="Baidu Logo" 
+             class="logo"
+             onerror="this.style.display='none'">
+
+        <form action="https://www.baidu.com/s" method="get" target="_blank">
+            <input type="text" 
+                   name="wd" 
+                   class="search-box" 
+                   placeholder="输入探索关键词..."
+                   autocomplete="off"
+                   autofocus
+                   required>
+            
+            <button type="submit" class="search-button">
+                <i class="fas fa-search"></i>
+                星际搜索
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // 动态背景交互
+        document.addEventListener('mousemove', (e) => {
+            const effects = document.querySelector('.hover-effects');
+            const element = document.createElement('div');
+            element.style.cssText = `
+                position: absolute;
+                left: ${e.clientX - 10}px;
+                top: ${e.clientY - 10}px;
+                width: 20px;
+                height: 20px;
+                background: radial-gradient(circle, 
+                    rgba(66, 133, 244, 0.5) 0%, 
+                    transparent 70%);
+                pointer-events: none;
+            `;
+            effects.appendChild(element);
+            
+            setTimeout(() => element.remove(), 1000);
+        });
+
+        // 随机占位符文本
+        const placeholderTexts = [
+            "探索未知领域...",
+            "输入你的好奇心...",
+            "寻找星际答案...",
+            "百度一下，知道更多..."
+        ];
+        
+        const searchBox = document.querySelector('.search-box');
+        setInterval(() => {
+            const randomIndex = Math.floor(Math.random() * placeholderTexts.length);
+            searchBox.placeholder = placeholderTexts[randomIndex];
+        }, 3000);
+
+        // 输入框特效
+        searchBox.addEventListener('focus', () => {
+            document.querySelector('.ripple-background').style.animationPlayState = 'paused';
+        });
+        
+        searchBox.addEventListener('blur', () => {
+            document.querySelector('.ripple-background').style.animationPlayState = 'running';
+        });
+    </script>
+</body>
 </html>
+        
+           

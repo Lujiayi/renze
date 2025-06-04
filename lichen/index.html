@@ -1,40 +1,74 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>网页按钮示例</title>
-  <style>
-    /* 按钮的样式 */
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>个人主页</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        .section {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .love-section {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .person-card {
+            border: 2px solid #e74c3c;
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .person-card:hover {
+            transform: scale(1.05);
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
-
 <body>
-  <!-- 按钮的 HTML 元素 -->
-  <button id="myButton">点击我</button>
+    <div class="section">
+        <h1>🎓 学生信息</h1>
+        <h2>姓名：李晨</h2>
+        <h3>班级：高二六班</h3>
+    </div>
 
-  <script>
-    // 获取按钮元素
-    const button = document.getElementById('myButton');
-    // 为按钮添加点击事件监听器
-    button.addEventListener('click', function () {
-      alert('你点击了按钮！');
-    });
-  </script>
+    <div class="section">
+        <h1>❤️ 喜欢的人：不高兴的小八</h1>
+        <h1>🎬 喜欢的视频</h1>
+        <div class="video-container">
+            <!-- 替换为实际视频嵌入代码 -->
+            <iframe src="https://v26-default.365yg.com/776e36409bae12840d28a903dde7caa2/682db0c4/video/tos/cn/tos-cn-ve-15/oQBXQeeMGBiNLYQBHTIz5DI6JCGEWWeArd7gjA/?a=2011&ch=0&cr=0&dr=0&er=0&lr=unwatermarked&net=5&cd=0%7C0%7C0%7C0&cv=1&br=993&bt=993&cs=0&ds=4&ft=k7Fz7VVywSyRKJ8kmo~pK7pswApJ3H3UvrKLO~ycdo0g3cI&mime_type=video_mp4&qs=0&rc=ODNoNWRkaDRoNDk0Nzg1NkBpM3hqcnQ5cnJ2dDMzNGkzM0A0NTAyLmIzNTQxNl9gNC9gYSNfcmxuMmRzbDZgLS1kLTBzcw%3D%3D&btag=80000e00008000&dy_q=1747821225&feature_id=46a7bb47b4fd1280f3d3825bf2b29388&l=20250521175345065AC985A9275F38D7E0" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </div>
 </body>
-
 </html>

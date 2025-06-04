@@ -3,247 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Landing | 精致起始页</title>
+    <title>朱子涵的个人空间 - 高二三班</title>
     <style>
-        :root {
-            --primary: #6366F1;
-            --primary-dark: #4F46E5;
-            --secondary: #10B981;
-            --dark: #1E293B;
-            --light: #F8FAFC;
-            --gray: #94A3B8;
-            --glass: rgba(255, 255, 255, 0.2);
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --radius-sm: 0.375rem;
-            --radius: 0.5rem;
-            --radius-lg: 0.75rem;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #F9FAFB 0%, #F1F5F9 100%);
-            color: var(--dark);
-            line-height: 1.6;
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
             min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* 玻璃拟态导航 */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            backdrop-filter: blur(10px);
-            background: var(--glass);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            z-index: 100;
-            padding: 1.5rem 0;
-            transition: var(--transition);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-icon {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
             justify-content: center;
-            color: white;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* 主要内容区 */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 8rem 2rem 4rem;
-        }
-
-        /* 英雄区域 */
-        .hero {
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            text-align: center;
-            padding: 4rem 0;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            max-width: 800px;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .primary-button {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .primary-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .secondary-button {
-            background: white;
-            color: var(--primary);
-            padding: 1rem 2rem;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--gray);
-        }
-
-        .secondary-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
-        }
-
-        /* 特性卡片 */
-        .features {
-            margin: 6rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .section-header p {
-            font-size: 1.125rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 2.5rem 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
             overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUp 0.6s forwards;
+            animation: fadeInUp 0.8s forwards;
         }
 
+        .avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: white;
+            margin: 30px auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            animation: rotateAvatar 3s linear infinite;
+        }
+
+        .name {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .name span {
+            display: inline-block;
+            animation: slideIn 0.8s forwards;
+        }
+
+        .class-info {
+            font-size: 1.2em;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.8s 0.3s forwards;
+        }
+
+        .bio {
+            font-size: 1.3em;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.8s 0.6s forwards;
+        }
+
+        .mouse-pointer {
+            width: 24px;
+            height: 40px;
+            border: 2px solid white;
+            border-radius: 12px;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollAnim 1.5s infinite;
+        }
+
+        .mouse-pointer::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            display: block;
+            margin: 6px auto;
+        }
+
+        /* 动画关键帧 */
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -251,330 +102,79 @@
             }
         }
 
-        .feature-card:nth-child(1) { animation-delay: 0.1s; }
-        .feature-card:nth-child(2) { animation-delay: 0.2s; }
-        .feature-card:nth-child(3) { animation-delay: 0.3s; }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .feature-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .feature-icon.product {
-            background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
-        }
-
-        .feature-icon.service {
-            background: linear-gradient(135deg, #10B981 0%, #047857 100%);
-        }
-
-        .feature-icon.customer {
-            background: linear-gradient(135deg, #F59E0B 0%, #B45309 100%);
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .feature-card p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-link {
-            display: inline-flex;
-            align-items: center;
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .feature-link:hover {
-            color: var(--primary-dark);
-        }
-
-        .feature-link svg {
-            margin-left: 0.5rem;
-            transition: var(--transition);
-        }
-
-        .feature-link:hover svg {
-            transform: translateX(3px);
-        }
-
-        /* 页脚 */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 4rem 0 2rem;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 3px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: var(--transition);
-            display: inline-block;
-        }
-
-        .footer-links a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 3rem;
-            margin-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--gray);
-            font-size: 0.875rem;
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.125rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .primary-button, .secondary-button {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* 滚动动画 */
-        @media (prefers-reduced-motion: no-preference) {
-            [data-animate] {
+        @keyframes slideIn {
+            0% {
+                transform: translateY(50px);
                 opacity: 0;
-                transform: translateY(30px);
-                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             }
-            
-            [data-animate].animate {
-                opacity: 1;
+            100% {
                 transform: translateY(0);
+                opacity: 1;
             }
+        }
+
+        @keyframes rotateAvatar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes scrollAnim {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 600px) {
+            .name { font-size: 2.5em; }
+            .avatar { width: 150px; height: 150px; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#" class="logo">
-                <div class="logo-icon">M</div>
-                <span>Modern</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">产品</a></li>
-                <li><a href="#">服务</a></li>
-                <li><a href="#">关于我们</a></li>
-                <li><a href="#">博客</a></li>
-            </ul>
-            <a href="#" class="cta-button">联系我们</a>
-        </nav>
-    </header>
-    
-    <main>
-        <section class="hero" data-animate>
-            <h1>创造卓越的数字体验</h1>
-            <p>我们致力于通过创新的设计和前沿技术，为客户提供卓越的数字产品和服务体验。</p>
-            <div class="hero-buttons">
-                <a href="#" class="primary-button">开始探索</a>
-                <a href="#" class="secondary-button">了解更多</a>
-            </div>
-        </section>
-        
-        <section class="features">
-            <div class="section-header" data-animate>
-                <h2>我们的核心优势</h2>
-                <p>通过专业服务和创新思维，我们帮助客户实现业务增长和数字化转型</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon product">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                        </svg>
-                    </div>
-                    <h3>优质产品</h3>
-                    <p>我们提供经过严格测试的高质量产品，确保您的使用体验和业务连续性。</p>
-                    <a href="#" class="feature-link">
-                        了解更多
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon service">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="3"></circle>
-                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                        </svg>
-                    </div>
-                    <h3>专业服务</h3>
-                    <p>我们的专业团队随时为您提供技术支持和服务咨询，确保您的业务高效运行。</p>
-                    <a href="#" class="feature-link">
-                        了解更多
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon customer">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <h3>客户至上</h3>
-                    <p>我们以客户需求为中心，不断改进产品和服务以满足您的期望和业务需求。</p>
-                    <a href="#" class="feature-link">
-                        了解更多
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Modern</h3>
-                <p>通过创新设计和前沿技术，为客户提供卓越的数字体验。</p>
-            </div>
-            
-            <div class="footer-column">
-                <h3>快速链接</h3>
-                <ul class="footer-links">
-                    <li><a href="#">首页</a></li>
-                    <li><a href="#">产品</a></li>
-                    <li><a href="#">服务</a></li>
-                    <li><a href="#">关于我们</a></li>
-                    <li><a href="#">博客</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>联系我们</h3>
-                <ul class="footer-links">
-                    <li><a href="#">info@modern.com</a></li>
-                    <li><a href="#">+86 10 1234 5678</a></li>
-                    <li><a href="#">北京市朝阳区</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>关注我们</h3>
-                <ul class="footer-links">
-                    <li><a href="#">微信</a></li>
-                    <li><a href="#">微博</a></li>
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">GitHub</a></li>
-                </ul>
-            </div>
+    <div class="container">
+        <div class="avatar"></div>
+        <div class="name">
+            <span>朱子涵</span>
         </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2023 Modern Design. 保留所有权利.</p>
-            <p>网页由问小白生成，仅供参考 | wenxiaobai.com</p>
+        <div class="class-info">高二三班</div>
+        <div class="bio">
+            我是一名高中生，热爱探索技术与创意的结合，喜欢用代码表达想法，享受从0到1创造事物的过程。
         </div>
-    </footer>
+        <div class="mouse-pointer"></div>
+    </div>
 
     <script>
-        // 滚动动画
-        document.addEventListener('DOMContentLoaded', () => {
-            const animateElements = document.querySelectorAll('[data-animate]');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            animateElements.forEach(el => observer.observe(el));
-        });
+        // 鼠标移动时添加动态粒子效果（可选增强）
+        const addParticle = (e) => {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = e.clientX + 'px';
+            particle.style.top = e.clientY + 'px';
+            particle.style.animationDelay = Math.random() * 0.5 + 's';
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 1000);
+        };
+        document.addEventListener('mousemove', addParticle);
+
+        // 粒子样式（可添加到CSS中）
+        const styleParticle = document.createElement('style');
+        styleParticle.textContent = `
+            .particle {
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: rgba(255,255,255,0.8);
+                border-radius: 50%;
+                opacity: 0;
+                animation: particleAnim 0.5s linear;
+            }
+            @keyframes particleAnim {
+                0% { opacity: 1; transform: scale(1); }
+                100% { opacity: 0; transform: scale(2); }
+            }
+        `;
+        document.head.appendChild(styleParticle);
     </script>
 </body>
 </html>

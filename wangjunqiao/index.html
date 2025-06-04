@@ -1,158 +1,184 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html><!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个性化主页 - 王俊桥</title>
+    <title>40人随机点名系统</title>
     <style>
-        /* 玻璃拟态效果 - 参考星际主题 */
         body {
-            margin: 0;
-            background: url('https://example.com/space-bg.jpg') no-repeat center/cover;
-            font-family: 'Arial', sans-serif;
-            color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
-            padding: 30px;
-            margin: 20px;
-        }
-
-        /* 动态导航栏 - 参考紫霞主题 */
-        .navbar {
+            background: url('https://img.zcool.cn/community/01e5e55d5540f5a8012187f4c9e3f5.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: "Microsoft YaHei", sans-serif;
             display: flex;
             justify-content: center;
-            padding: 20px 0;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            padding: 10px 15px;
-            position: relative;
-            transition: all 0.3s;
-        }
-        .navbar a:hover {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-        .navbar a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #ff00cc, #3333ff);
-            transition: all 0.3s;
-        }
-        .navbar a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
-        /* 3D卡片翻转 - 参考墨夜主题 */
-        .project-card {
-            width: 300px;
-            height: 200px;
-            perspective: 1000px;
-            margin: 20px;
-        }
-        .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-        .project-card:hover .card-inner {
-            transform: rotateY(180deg);
-        }
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
+        .container {
+            width: 800px;
+            background: rgba(255,255,255,0.9);
             border-radius: 10px;
-            padding: 20px;
-            box-sizing: border-box;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            padding: 30px;
+            text-align: center;
         }
-        .card-front {
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
+        h1 {
+            color: #6200ff;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
-        .card-back {
-            background: linear-gradient(45deg, #11998e, #38ef7d);
-            transform: rotateY(180deg);
+        .name-display {
+            font-size: 48px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            color: #000000;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .highlight {
+            transform: scale(1.1);
+            color: #D2691E;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        button {
+            padding: 12px 25px;
+            margin: 0 10px;
+            font-size: 16px;
+            background: #8B4513;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #A0522D;
+            transform: translateY(-3px);
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .name-list {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+            background: rgba(245, 255, 252, 0.7);
+            border-radius: 5px;
+        }
+        .name-item {
+            padding: 8px;
+            background: #f5f5dc;
+            border-radius: 3px;
+            border: 1px solid #ddd;
         }
     </style>
 </head>
 <body>
-    <!-- 粒子动画背景 - 参考Tomotoes模板 -->
-    <canvas id="particles-js"></canvas>
-
-    <div class="glass-panel" style="max-width: 1200px; margin: 50px auto;">
-        <!-- 导航栏 -->
-        <nav class="navbar">
-            <a href="#home">首页</a>
-            <a href="#about">关于我</a>
-            <a href="#projects">作品集</a>
-            <a href="#contact">联系</a>
-        </nav>
-
-        <!-- 首页内容 -->
-        <section id="home" style="text-align: center; padding: 50px 0;">
-            <h1 style="font-size: 3em; margin-bottom: 20px;">你好，我是<span style="color: #ff00cc;">你的名字</span></h1>
-            <p style="font-size: 1.5em;">前端开发者 | 设计师 | 创意工作者</p>
-        </section>
-
-        <!-- 作品集展示 -->
-        <section id="projects" style="display: flex; flex-wrap: wrap; justify-content: center;">
-            <div class="project-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <h3>项目1</h3>
-                        <p>点击查看详情</p>
-                    </div>
-                    <div class="card-back">
-                        <h3>项目详情</h3>
-                        <p>这里描述你的项目...</p>
-                    </div>
-                </div>
-            </div>
-            <!-- 更多项目卡片... -->
-        </section>
+    <div class="container">
+        <h1>40人随机点名系统</h1>
+        <div class="name-display" id="nameDisplay">准备开始</div>
+        <div class="controls">
+            <button id="startBtn">开始点名</button>
+            <button id="stopBtn" disabled>停止</button>
+            <button id="resetBtn">重置</button>
+        </div>
+        <div class="name-list" id="nameList"></div>
     </div>
 
-    <!-- 粒子动画脚本 - 参考Tomotoes模板 -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // 初始化粒子动画
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#ffffff" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.5, "random": true },
-                "size": { "value": 3, "random": true },
-                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-                "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "grab" },
-                    "onclick": { "enable": true, "mode": "push" }
-                }
-            }
-        });
-
-        // 滚动视差效果 - 参考星际主题
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY;
-            const homeSection = document.getElementById('home');
-            homeSection.style.transform = `translateY(${
+        // 40人名单
+        const nameList = [
+            "张三", "李四", "王五", "赵六", "钱七", "孙八", "周九", "吴十",
+            "郑十一", "王十二", "刘十三", "陈十四", "杨十五", "黄十六", "赵十七", "吴十八",
+            "周十九", "徐二十", "孙二一", "马二二", "朱二三", "胡二四", "林二五", "郭二六",
+            "何二七", "高二八", "罗二九", "郑三十", "梁三一", "谢三二", "宋三三", "唐三四",
+            "许三五", "韩三六", "邓三七", "曹三八", "彭三九", "萧四十"
+        ];
+        
+        let isRunning = false;
+        let intervalId = null;
+        
+        const nameDisplay = document.getElementById('nameDisplay');
+        const nameListEl = document.getElementById('nameList');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        
+        // 初始化名单显示
+        function renderNameList() {
+            nameListEl.innerHTML = '';
+            nameList.forEach(name => {
+                const div = document.createElement('div');
+                div.className = 'name-item';
+                div.textContent = name;
+                nameListEl.appendChild(div);
+            });
+        }
+        
+        // 随机选择名字
+        function getRandomName() {
+            return nameList[Math.floor(Math.random() * nameList.length)];
+        }
+        
+        // 开始点名
+        function startRolling() {
+            if (isRunning) return;
+            
+            isRunning = true;
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+            nameDisplay.classList.add('highlight');
+            
+            intervalId = setInterval(() => {
+                nameDisplay.textContent = getRandomName();
+            }, 100);
+        }
+        
+        // 停止点名
+        function stopRolling() {
+            if (!isRunning) return;
+            
+            clearInterval(intervalId);
+            isRunning = false;
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            nameDisplay.classList.remove('highlight');
+        }
+        
+        // 重置
+        function reset() {
+            stopRolling();
+            nameDisplay.textContent = '准备开始';
+        }
+        
+        // 事件监听
+        startBtn.addEventListener('click', startRolling);
+        stopBtn.addEventListener('click', stopRolling);
+        resetBtn.addEventListener('click', reset);
+        
+        // 初始化
+        renderNameList();
+    </script>
+</body>
+</html>

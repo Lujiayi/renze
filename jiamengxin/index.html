@@ -3,55 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>仿百度搜索引擎</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>贾梦欣 | 高二（6）班</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .media-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .media-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .intro-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            position: relative;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 10px;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            border-radius: 5px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--secondary);
+            color: white;
+            border-radius: 20px;
+            margin: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- 头部导航栏 -->
-    <header class="header">
-        <nav class="nav-left">
-            <ul>
-                <li><a href="#">新闻</a></li>
-                <li><a href="#">地图</a></li>
-                <li><a href="#">贴吧</a></li>
-                <li><a href="#">更多▼</a></li>
-            </ul>
-        </nav>
-        <div class="nav-right">
-            <a href="#">设置</a>
-            <a href="#" class="login-btn">登录</a>
-        </div>
-    </header>
-
-    <!-- 主体搜索区 -->
-    <main class="main-content">
-        <div class="logo">
-            <img src="https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3ebb4f3d3.png" alt="搜索引擎Logo">
-        </div>
-        
-        <!-- 搜索表单 -->
-        <form action="https://www.baidu.com/s" method="GET" class="search-form">
-            <div class="search-box">
-                <input type="text" name="wd" class="search-input" autocomplete="off">
-                <button type="submit" class="search-btn">搜索</button>
+    <div class="container">
+        <div class="header">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">贾梦欣</h1>
+            <div style="font-size: 1.5rem;">
+                <i class="fas fa-graduation-cap"></i> 高二（6）班
             </div>
-        </form>
-
-        <!-- 快捷入口 -->
-        <div class="quick-links">
-            <a href="#">百度热榜</a>
-            <a href="#">疫情动态</a>
-            <a href="#">天气预报</a>
         </div>
-    </main>
 
-    <!-- 页脚信息 -->
-    <footer class="footer">
-        <p>©2025 仿百度搜索 使用百度前必读 意见反馈</p>
-    </footer>
+        <div class="profile-grid">
+            <div class="media-card">
+                <div class="video-container">
+                    <iframe src="//player.youku.com/embed/XNTg5MjY1ODI4MA==" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                </div>
+                <div style="padding: 1rem; text-align: center;">
+                    <h3>偶像视频 <i class="fas fa-video"></i></h3>
+                </div>
+            </div>
 
-    <!-- 可选的Google自定义搜索集成 -->
-    <script async src="https://cse.google.com/cse.js?cx=your-engine-id"></script>
-    <div class="gcse-search"></div>
+            <div class="media-card">
+                <img src="yixianqianxi.jpg" alt="易烊千玺" style="width: 100%; height: 400px; object-fit: cover;">
+                <div style="padding: 1rem; text-align: center;">
+                    <h3>偶像写真 <i class="fas fa-camera"></i></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="intro-card">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <span class="badge"><i class="fas fa-star"></i> 三好学生</span>
+                <span class="badge"><i class="fas fa-trophy"></i> </span>
+                <span class="badge"><i class="fas fa-music"></i> </span>
+            </div>
+            
+            <h2 style="color: var(--secondary); text-align: center;">个人简介</h2>
+            <p style="font-size: 1.1rem; text-indent: 2em;">
+                我是贾梦欣，来自充满活力的高二（6）班我始终秉持"全面发展"的理念
+            </p>
+            <p style="font-size: 1.1rem; text-indent: 2em;">
+                易烊千玺是我的人生榜样，他的多栖发展轨迹激励着我不断突破自我。从街舞社的领队到数学竞赛选手，从校园广播站主播到环保社团发起人，我始终相信：青春就是用来突破边界的！
+            </p>
+            <div style="text-align: center; margin-top: 2rem;">
+                <div style="display: inline-flex; gap: 1rem;">
+                    <a href="#" style="color: var(--secondary);"><i class="fab fa-weixin fa-2x"></i></a>
+                    <a href="#" style="color: var(--primary);"><i class="fab fa-bilibili fa-2x"></i></a>
+                    <a href="#" style="color: var(--accent);"><i class="fas fa-envelope fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
